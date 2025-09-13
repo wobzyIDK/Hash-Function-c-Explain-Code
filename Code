@@ -1,32 +1,41 @@
-#include <iostream>
-#include <cstring>
-//can use #include<bits/stdc++.h> for some
+#include <iostream>  // for input/output (cin, cout)
+#include <cstring>   // for memset
 using namespace std;
 
+// OFFSET is used to handle negative numbers in the array
 const int OFFSET = 500000;
-const int MAXN = 1000001;  
+
+// MAXN is the size of the array, must cover all possible indices
+const int MAXN = 1000001;
+
+// a[] is the presence array; a[i] = 1 means the number (i - OFFSET) exists
 int a[MAXN];
 
 int main() {
-    int n, m;
+    int n, m;  // n = number of integers, m = how many largest numbers to print
 
+    // Read n and m from input; exit if input is invalid
     if (scanf("%d%d", &n, &m) != 2) return 0;
 
+    // Initialize all elements of the array to 0
     memset(a, 0, sizeof(a));
-    for(int i=0; i<n; i++) {
-        int t;
-        scanf("%d", &t);
-        a[OFFSET + t] = 1;
+
+    // Read each number and mark it in the array
+    for(int i = 0; i < n; i++) {
+        int t;           // temporary variable to store the input number
+        scanf("%d", &t); // read a number
+        a[OFFSET + t] = 1; // mark that this number exists in the array
     }
 
-    for(int i = MAXN-1; i>=0 && m>0; i--) {
-        if (a[i]) {
-            printf("%d", i - OFFSET);
-            m--;
-            if(m > 0) printf(" ");  
-            else printf("\n");     
+    // Scan the array from largest to smallest index
+    for(int i = MAXN - 1; i >= 0 && m > 0; i--) {
+        if (a[i]) {                    // if this number exists
+            printf("%d", i - OFFSET);  // print the original number
+            m--;                       // decrease remaining numbers to print
+            if(m > 0) printf(" ");     // print a space if more numbers follow
+            else printf("\n");         // print newline after the last number
         }
     }
 
-    return 0;
+    return 0; // program finished successfully
 }
