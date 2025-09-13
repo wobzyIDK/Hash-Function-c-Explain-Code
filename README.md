@@ -1,2 +1,2 @@
-# Hash-Function-c-Explain-Code
-In this repository I will be doing Hash Function for sorting. I am new to coding don't mind if it's bad. 
+Sorting Code
+In this repository I will be doing a way for sorting algorith in c++. I am new to coding don't mind if it's bad. 
